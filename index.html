@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Happy Birthday - Dark Futuristic</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+
+  body {
+    margin: 0;
+    height: 100vh;
+    background: radial-gradient(circle at center, #0a0c15, #1e213a, #121726);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #a0c4ff;
+    font-family: 'Orbitron', sans-serif;
+    perspective: 1000px;
+    overflow: hidden;
+  }
+
+  h1 {
+    font-size: 5rem;
+    position: relative;
+    color: #4a6072;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    animation: subtleGlow 3s ease-in-out infinite alternate;
+    transform-style: preserve-3d;
+    text-shadow:
+      0 0 4px #445a6b,
+      0 0 8px #34465a;
+  }
+
+  h1::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    color: #3a4b57;
+    filter: blur(3px);
+    z-index: -1;
+    transform: translateZ(-20px);
+  }
+
+  p {
+    font-size: 1.5rem;
+    margin-top: 0.5em;
+    color: #7e9cbfcc;
+    text-shadow: 0 0 5px #5a7ba8;
+  }
+
+  .credit {
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    font-family: 'Courier New', monospace;
+    color: #324a5f;
+    font-size: 0.9rem;
+    opacity: 0.6;
+    user-select: none;
+  }
+
+  .particles {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .particle {
+    position: absolute;
+    background: #56789a;
+    opacity: 0.1;
+    border-radius: 50%;
+    animation: floatUp 8s linear infinite;
+    filter: drop-shadow(0 0 2px #6789ab);
+  }
+
+  .particle.small { width: 5px; height: 5px; animation-duration: 6s; }
+  .particle.medium { width: 9px; height: 9px; animation-duration: 9s; }
+  .particle.large { width: 14px; height: 14px; animation-duration: 12s; }
+
+  @keyframes subtleGlow {
+    0% {
+      text-shadow:
+      0 0 4px #445a6b,
+      0 0 8px #34465a;
+      color: #4a6072;
+    }
+    100% {
+      text-shadow:
+      0 0 6px #566d85,
+      0 0 12px #435a7b;
+      color: #556f88;
+    }
+  }
+
+  @keyframes floatUp {
+    0% {
+      transform: translateY(100vh) translateX(0) scale(1) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.1;
+    }
+    100% {
+      transform: translateY(-10vh) translateX(40px) scale(0.5) rotate(360deg);
+      opacity: 0;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <h1 data-text="Happy Birthday, Trongo!">Happy Birthday Trongo, My Pookie🏳‍⚧!</h1>
+  <p>Benson (🚬) Ta khilash nai onk koshTo paichi 😭.</p>
+
+  <div class="credit">Created by Misbah</div>
+
+  <div class="particles" aria-hidden="true"></div>
+
+<script>
+  const container = document.querySelector('.particles');
+  const particleCount = 20;
+  const sizes = ['small', 'medium', 'large'];
+
+  for(let i=0; i < particleCount; i++){
+    const p = document.createElement('div');
+    p.classList.add('particle');
+    p.classList.add(sizes[Math.floor(Math.random()*sizes.length)]);
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.animationDelay = (Math.random() * 8) + 's';
+    container.appendChild(p);
+  }
+</script>
+
+</body>
+</html>
